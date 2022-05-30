@@ -40,7 +40,7 @@ router.post('/questions/create', (req,res) => {
     });
 });
 
-router.delete('/questions/:id/delete', (req,res)=>{
+router.get('/questions/:id/delete', (req,res)=>{
     Questions.findOneAndDelete({_id: req.params.id},function (err, docs) {
         if (err){
             console.log(err)
@@ -78,7 +78,7 @@ router.post('/questions/:id/options/create', async (req,res) => {
 });
 
 
-router.delete('/questions/:id/options/:ido/delete',async (req,res)=>{
+router.get('/questions/:id/options/:ido/delete',async (req,res)=>{
     const opt = {id : req.params.ido}
 
     await Questions.findOneAndUpdate({_id: req.params.id},
@@ -104,8 +104,6 @@ router.get('/questions/:id/options/:ido/add_vote', async (req,res)=>{
         );
         res.redirect('/questions');
         return;
-
-
 });
 
 
